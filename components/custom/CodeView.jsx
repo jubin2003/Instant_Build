@@ -65,19 +65,24 @@ const GenerateAiCode = async () => {
     const result = await axios.post("/api/gen-ai-code", { prompt: PROMPT });
     const aiResp = result.data;
 
-    const mergedFiles = { ...Lookup.DEFAULT_FILE, ...aiResp?.files };
-    setFiles(mergedFiles);
-
-    await UpdateFiles({
-      workspaceId: id,
-      files: aiResp?.files,
-    });
+      // Ensure aiResp.files is defined
+      if (!aiResp?.files) {
+        throw new Error("AI response does not contain files.");
+      }
+      console.log("AI Response:", aiResp);
+      const mergedFiles = { ...Lookup.DEFAULT_FILE, ...aiResp.files };
+      setFiles(mergedFiles);
+  
+      // Ensure files are passed correctly
+      await UpdateFiles({
+        workspaceId: id,
+        files: aiResp.files,
+      });
 
      // Token deduction logic
-     const token = Number(userDetail?.token) - Number(countToken(JSON.stringify(aiResp)));
-         //  setUserDetail((prev) => ({ ...prev, token: updatedTokens }));
-           await UpdateTokens({ userId: userDetail?._id, token: token });
-
+     const token = Number(userDetail?.token) - Number(countToken(JSON.stringify(aiResp))) ;
+     
+     await UpdateTokens({ userId: userDetail?._id, token: token });
     setUserDetail((prev) => ({
       ...prev,
       token: token,

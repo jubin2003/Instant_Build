@@ -50,7 +50,8 @@ export const CreateUser = mutation({
       });
       return result; // Return the ID of the newly created user.
     }
-    return user._id; // Return the existing user's ID.
+    return user._id;
+    // Return the existing user's ID.
   },
 });
 
@@ -74,9 +75,6 @@ export const UpdateToken = mutation({
     userId: v.id("users"),
   },
   handler: async (ctx, args) => {
-    if (isNaN(args.token) || args.token < 0) {
-      throw new Error("Invalid token value. Token must be a valid number and non-negative.");
-    }
     const result = await ctx.db.patch(args.userId, {
       token: args.token,
     });

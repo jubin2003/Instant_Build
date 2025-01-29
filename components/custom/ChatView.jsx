@@ -19,6 +19,7 @@ export const countToken = (inputText) => {
   return inputText.trim().split(/\s+/).filter((word) => word).length;
 };
 
+
 function ChatView() {
   const { id } = useParams();
   const convex = useConvex();
@@ -58,19 +59,22 @@ function ChatView() {
       const aiResp = { role: "ai", content: result.data.result };
   
       setMessages((prev) => [...prev, aiResp]);
+
+
       await UpdateMessages({ messages: [...messages, aiResp], workspaceId: id });
   
-      // Token Deduction
-      const token = Number(userDetail?.token) - Number(countToken(JSON.stringify(aiResp)));
-     
+      const token = Number(userDetail?.token) - Number(countToken(JSON.stringify(aiResp))) ;
+
+  
     // Add this right after token calculation
 if (isNaN(token) || token < 0) {
   setToastMessage("Not enough tokens available!");
   setToastOpen(true);
   return;
 }
+await UpdateTokens({ userId: userDetail?._id, token: token });
 setUserDetail((prev) => ({ ...prev, token: token }));
-      await UpdateTokens({ userId: userDetail?._id, token: token });
+      
   
     } catch (error) {
       console.error("Error in GetAiResponse:", error);

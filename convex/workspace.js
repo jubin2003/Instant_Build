@@ -39,17 +39,17 @@ export const UpdateMessages = mutation({
 })
 
 export const UpdateFiles = mutation({
-  args:{
-    workspaceId:v.id('workspace'),
-    files:v.any()
+  args: {
+    workspaceId: v.id('workspace'),
+    files: v.optional(v.any()) // Make files optional
   },
-  handler:async(ctx,args)=>{
-    const result = await ctx.db.patch(args.workspaceId,{
-      fileData:args.files
+  handler: async (ctx, args) => {
+    const result = await ctx.db.patch(args.workspaceId, {
+      fileData: args.files || {} // Provide a default value if files is undefined
     });
-    return result
+    return result;
   }
-})
+});
 
 export const GetAllWorkspace=query({
  args:{
