@@ -79,14 +79,14 @@ const GenerateAiCode = async () => {
         files: aiResp.files,
       });
 
-     // Token deduction logic
-     const token = Number(userDetail?.token) - Number(countToken(JSON.stringify(aiResp))) ;
+    //  // Token deduction logic
+    //  const token = Number(userDetail?.token) - Number(countToken(JSON.stringify(aiResp))) ;
      
-     await UpdateTokens({ userId: userDetail?._id, token: token });
-    setUserDetail((prev) => ({
-      ...prev,
-      token: token,
-    }));
+    //  await UpdateTokens({ userId: userDetail?._id, token: token });
+    // setUserDetail((prev) => ({
+    //   ...prev,
+    //   token: token,
+    // }));
 
     setActiveTab("code");
   } catch (error) {

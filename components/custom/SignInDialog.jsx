@@ -77,7 +77,7 @@ function SignInDialog({ openDialog, closeDialog }) {
                 >
                   <FcGoogle size={20} /> Sign In with Google
                 </Button>
-                <span className="text-gray-400 text-center text-sm font-medium">
+                <span className="text-gray-400 text-center text-sm font-light">
                   {Lookup?.SIGNIn_AGREEMENT_TEXT}
                 </span>
               </div>

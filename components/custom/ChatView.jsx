@@ -15,9 +15,9 @@ import ReactMarkdown from "react-markdown";
 import * as Toast from "@radix-ui/react-toast";
 import { useSidebar } from "../ui/sidebar";
 
-export const countToken = (inputText) => {
-  return inputText.trim().split(/\s+/).filter((word) => word).length;
-};
+// export const countToken = (inputText) => {
+//   return inputText.trim().split(/\s+/).filter((word) => word).length;
+// };
 
 
 function ChatView() {
@@ -63,17 +63,17 @@ function ChatView() {
 
       await UpdateMessages({ messages: [...messages, aiResp], workspaceId: id });
   
-      const token = Number(userDetail?.token) - Number(countToken(JSON.stringify(aiResp))) ;
+//       const token = Number(userDetail?.token) - Number(countToken(JSON.stringify(aiResp))) ;
 
   
-    // Add this right after token calculation
-if (isNaN(token) || token < 0) {
-  setToastMessage("Not enough tokens available!");
-  setToastOpen(true);
-  return;
-}
-await UpdateTokens({ userId: userDetail?._id, token: token });
-setUserDetail((prev) => ({ ...prev, token: token }));
+//     // Add this right after token calculation
+// if (isNaN(token) || token < 0) {
+//   setToastMessage("Not enough tokens available!");
+//   setToastOpen(true);
+//   return;
+// }
+// await UpdateTokens({ userId: userDetail?._id, token: token });
+// setUserDetail((prev) => ({ ...prev, token: token }));
       
   
     } catch (error) {

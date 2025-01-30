@@ -26,11 +26,11 @@ function SideBarFooter() {
       name: "Help Center",
       icon: HelpCircle,
     },
-    {
-      name: "My Subscription",
-      icon: Wallet,
-      path: "/pricing",
-    },
+    // {
+    //   name: "My Subscription",
+    //   icon: Wallet,
+    //   path: "/pricing",
+    // },
     {
       name: "Sign Out",
       icon: LogOut,

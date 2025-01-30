@@ -46,7 +46,7 @@ const onGenerate = async (input) => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4 sm:px-8 lg:px-16">
-    <div className="flex flex-col items-center mt-36 xl:mt-52 gap-2">
+    <div className="flex flex-col items-center mt-16 xl:mt-35 gap-2">
       <h2 className="font-bold text-4xl text-center">{Lookup.HERO_HEADING}</h2>
       <p className="text-gray-500 font-medium text-center">{Lookup.HERO_DESC}</p>
       <div

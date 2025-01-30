@@ -26,7 +26,7 @@ function Provider({ children }) {
  
   const IsAuthenticated = async () => {
     if (typeof window !== undefined) {
-      const storedUser = JSON.parse(localStorage.getItem("user"));
+      const storedUser = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
       if (storedUser?._id) {
         const user = await convex.query(api.users.GetUser, {
           email: storedUser.email, // Optional but for validation
