@@ -71,9 +71,9 @@ function CodeView() {
       const aiResp = result.data;
 
       // Ensure aiResp.files is defined
-      if (!aiResp?.files) {
-        throw new Error("AI response does not contain files.");
-      }
+      // if (!aiResp?.files) {
+      //   throw new Error("AI response does not contain files.");
+      // }
 
       const mergedFiles = { ...Lookup.DEFAULT_FILE, ...aiResp.files };
       setFiles(mergedFiles);
