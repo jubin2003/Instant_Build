@@ -6,7 +6,7 @@ import { UserDetailContext } from "@/context/UserDetailContext";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ActionContext } from "@/context/ActionContext";
-import { LucideDownload, Rocket } from "lucide-react";
+import { LucideDownload, Rocket, LogOut } from "lucide-react";
 import SignInDialog from "./SignInDialog";
 
 function Header() {
@@ -20,6 +20,13 @@ function Header() {
       actionType: action,
       timeStamp: Date.now(),
     });
+  };
+
+  const handleSignOut = () => {
+    // Clear user details from context
+    setUserDetail(null);
+    // Optionally, you can also clear user data from localStorage or cookies
+    localStorage.removeItem("userDetail"); // Example: Clear localStorage
   };
 
   return (
@@ -51,24 +58,35 @@ function Header() {
             </Button>
           </div>
         ) : (
-          // Workspace Buttons
-          path?.includes("workspace") && (
-            <div className="flex gap-2 items-center">
+          // Workspace Buttons or Sign Out Button
+          <div className="flex gap-2 items-center">
+            {path?.includes("workspace") ? (
+              <>
+                <Button
+                  variant="ghost"
+                  onClick={() => onActionBtn("export")}
+                  className="flex items-center gap-1"
+                >
+                  <LucideDownload /> Export
+                </Button>
+                <Button
+                  className="bg-blue-500 text-white hover:bg-blue-600 flex items-center gap-1 px-4 py-2 rounded-md"
+                  onClick={() => onActionBtn("deploy")}
+                >
+                  <Rocket /> Deploy
+                </Button>
+              </>
+            ) : (
+              // Sign Out Button (when not in workspace)
               <Button
                 variant="ghost"
-                onClick={() => onActionBtn("export")}
+                onClick={handleSignOut}
                 className="flex items-center gap-1"
               >
-                <LucideDownload /> Export
+                <LogOut /> Sign Out
               </Button>
-              <Button
-                className="bg-blue-500 text-white hover:bg-blue-600 flex items-center gap-1 px-4 py-2 rounded-md"
-                onClick={() => onActionBtn("deploy")}
-              >
-                <Rocket /> Deploy
-              </Button>
-            </div>
-          )
+            )}
+          </div>
         )}
       </div>
 

@@ -21,7 +21,7 @@ function AppSideBar() {
     <div>
       <Sidebar>
         <SidebarHeader className="p-5">
-          <Image src={"/bolt.jpg"} alt="logo" width={30} height={30} />
+          <Image src={"/instant.png"} alt="logo" width={30} height={30} />
           <Button className='mt-5' onClick={handleStartNewChat}>
             <MessageCircleCode />
             Start New Chat
