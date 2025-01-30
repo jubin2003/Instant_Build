@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import { ActionContext } from "@/context/ActionContext";
 import { LucideDownload, Rocket, LogOut } from "lucide-react";
 import SignInDialog from "./SignInDialog";
-
+import Logo from "/public/design.jpg";
 function Header() {
   const { userDetail, setUserDetail } = useContext(UserDetailContext);
   const { action, setAction } = useContext(ActionContext) || {};
@@ -35,7 +35,7 @@ function Header() {
       <div className="p-4 flex justify-between items-center border-b">
         {/* Logo */}
         <Link href={"/"}>
-          <Image src="/instant.png" alt="logo" width={40} height={40} />
+          <Image src={Logo} alt="logo" width={40} height={40} />
         </Link>
 
         {/* Buttons for Sign In / Get Started or Workspace Actions */}

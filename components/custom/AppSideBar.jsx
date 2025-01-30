@@ -8,10 +8,11 @@ import {
 } from "@/components/ui/sidebar";
 import Image from "next/image";
 import { Button } from "../ui/button";
-import { MessageCircleCode } from "lucide-react";
+import { ChartBarIcon, MessageCircleCode } from "lucide-react";
 import WorkspaceHistory from "./WorkspaceHistory";
 import SideBarFooter from "./SideBarFooter";
 import { useRouter } from "next/navigation"; 
+import Logo from "/public/design.jpg";
 function AppSideBar() {
   const router = useRouter(); // Initialize the router
   const handleStartNewChat = () => {
@@ -21,7 +22,7 @@ function AppSideBar() {
     <div>
       <Sidebar>
         <SidebarHeader className="p-5">
-          <Image src={"/instant.png"} alt="logo" width={30} height={30} />
+          <Image src={Logo} alt="logo" width={30} height={30} />
           <Button className='mt-5' onClick={handleStartNewChat}>
             <MessageCircleCode />
             Start New Chat
