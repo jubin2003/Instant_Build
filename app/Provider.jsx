@@ -32,7 +32,6 @@ function Provider({ children }) {
           email: storedUser.email, // Optional but for validation
         });
         setUserDetail(user);
-        console.log("User fetched:", user);
       }
     }
   };

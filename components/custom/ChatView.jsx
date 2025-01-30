@@ -42,7 +42,7 @@ function ChatView() {
       workspaceId: id,
     });
     setMessages(Array.isArray(result?.messages) ? result.messages : []);
-    console.log("Workspace data:", result);
+    
   };
 
   useEffect(() => {

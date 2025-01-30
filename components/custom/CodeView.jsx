@@ -69,7 +69,7 @@ const GenerateAiCode = async () => {
       if (!aiResp?.files) {
         throw new Error("AI response does not contain files.");
       }
-      console.log("AI Response:", aiResp);
+     
       const mergedFiles = { ...Lookup.DEFAULT_FILE, ...aiResp.files };
       setFiles(mergedFiles);
   
