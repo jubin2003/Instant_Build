@@ -1,4 +1,6 @@
-"use client";
+
+"use client"; // Mark this component as a Client Component
+// import dynamic from 'next/dynamic';
 import React, { useContext, useEffect, useState } from "react";
 import {
   SandpackProvider,
@@ -16,8 +18,11 @@ import { useParams } from "next/navigation";
 import { Loader2Icon } from "lucide-react";
 import { countToken } from "./ChatView";
 import { UserDetailContext } from "@/context/UserDetailContext";
-import SandpackPreviewClient from "./SandpackPreviewClient";
 import { ActionContext } from "@/context/ActionContext";
+
+const SandpackPreviewClient = dynamic(() => import('./SandpackPreviewClient'), {
+  ssr: false,
+});
 
 function CodeView() {
   const { id } = useParams();
