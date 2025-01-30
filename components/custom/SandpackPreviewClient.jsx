@@ -18,12 +18,11 @@ function SandpackPreviewClient() {
       const client = previewRef.current?.getClient();
       if (client) {
         const result = await client.getCodeSandboxURL();
-    
 
         if (action?.actionType === "deploy") {
-          window?.open('https://'+result?.sandboxId+'.csb.app/');
+          window?.open('https://' + result?.sandboxId + '.csb.app/');
         } else if (action?.actionType === "export") {
-          window?.open('https://codesandbox.io/s/'+result?.sandboxId);
+          window?.open('https://codesandbox.io/s/' + result?.sandboxId);
         }
 
         // Reset action to avoid repeated triggers
