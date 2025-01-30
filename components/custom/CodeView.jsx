@@ -1,6 +1,6 @@
-
 "use client"; // Mark this component as a Client Component
-// import dynamic from 'next/dynamic';
+
+import dynamic from 'next/dynamic';
 import React, { useContext, useEffect, useState } from "react";
 import {
   SandpackProvider,
@@ -21,7 +21,7 @@ import { UserDetailContext } from "@/context/UserDetailContext";
 import { ActionContext } from "@/context/ActionContext";
 
 const SandpackPreviewClient = dynamic(() => import('./SandpackPreviewClient'), {
-  ssr: false,
+  ssr: false, // Disable SSR for this component
 });
 
 function CodeView() {

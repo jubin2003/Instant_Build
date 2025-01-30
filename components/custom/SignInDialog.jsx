@@ -14,7 +14,7 @@ import { UserDetailContext } from "@/context/UserDetailContext";
 import { useMutation } from "convex/react";
 import uuid4 from "uuid4";
 import { api } from "@/convex/_generated/api";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+// import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { FcGoogle } from "react-icons/fc";
 
 
@@ -58,7 +58,7 @@ function SignInDialog({ openDialog, closeDialog }) {
           <DialogHeader className="text-center">
             {/* Hidden DialogTitle for Accessibility */}
             <DialogTitle>
-              <VisuallyHidden>Sign In</VisuallyHidden>
+             Sign In
             </DialogTitle>
             <div className="text-sm">
               <div className="flex flex-col justify-center items-center gap-4">
